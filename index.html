@@ -1,6 +1,3 @@
-<?php
-session_start();
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -223,28 +220,7 @@ html {
                 <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
                 <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
                 <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                <?php if(!isset($_SESSION['uid'])):?>
-                <li class="nav-item ms-lg-3 py-2 py-lg-0 mb-2 d-grid"> 
-                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
-                </li>
-                <li class="nav-item ms-lg-2 py-2 py-lg-0 d-grid">
-                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#signupModal" id="signupBtn">
-                        Sign Up
-                    </button>
-                </li>
-                <!-- <li class="nav-item ms-lg-2 py-2 py-lg-0 d-grid">
-                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#logoutModal" id="logoutBtn">
-                        logout
-                    </button>
-                </li> -->
-                <?php endif; ?>
-                <?php if(isset($_SESSION['uid'])): ?>
-  <li class="nav-item ms-lg-2 py-2 py-lg-0 d-grid">
-    <form method="post" action="logout.php" style="display:inline;">
-      <button type="submit" class="btn btn-danger" id="logoutBtn">Logout</button>
-    </form>
-  </li>
-<?php endif; ?>
+
             </ul>
         </div>
     </div>
@@ -511,30 +487,7 @@ html {
         </div>
       </div>
 
-      <!-- Extra Row (2 Cards)
-      <div class="col-lg-4 col-md-6">
-        <div class="card border-0 shadow h-100 p-4 text-center transition-card">
-          <div class="mb-3 text-primary">
-            <i class="bi bi-globe fs-1"></i>
-          </div>
-          <h5 class="card-title fw-bold">Global Reach</h5>
-          <p class="card-text">
-            Expanding your business worldwide through smart strategies and partnerships.
-          </p>
-        </div>
-      </div>
 
-      <div class="col-lg-4 col-md-6">
-        <div class="card border-0 shadow h-100 p-4 text-center transition-card">
-          <div class="mb-3 text-primary">
-            <i class="bi bi-people fs-1"></i>
-          </div>
-          <h5 class="card-title fw-bold">Team Collaboration</h5>
-          <p class="card-text">
-            Bringing your team together with innovative tools for seamless communication.
-          </p>
-        </div>
-      </div> -->
     </div>
   </div>
 </section>
@@ -1016,73 +969,7 @@ html {
     </div>
   </div>
 </footer>
-<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title fw-bold" id="loginModalLabel">Login to MyBiz</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form method="post" action="login_proc.php">
-          <div class="mb-3">
-            <label for="email" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="email" placeholder="Enter your email" name="email">
-          </div>
-          <div class="mb-3">
-            <label for="password" class="form-label">Password</label>
-            <input type="password" class="form-control" id="password" placeholder="Enter your password" name="pword">
-          </div>
-          <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="rememberMe">
-            <input type="hidden" name="uid">
-            <label class="form-check-label" for="rememberMe">Remember me</label>
-          </div>
-          <button type="submit" class="btn btn-primary w-100" name="login">Login</button>
-        </form>
-      </div>
-      <div class="modal-footer text-center">
-        <p class="mb-0">Don't have an account? <a href="#signupModal" data-bs-toggle="modal" data-bs-target="#signupModal" data-bs-dismiss="modal">Sign Up</a></p>
-      </div>
-    </div>
-  </div>
-</div>
 
-<div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content border-0 shadow-lg">
-      <div class="modal-header bg-success text-white">
-        <h5 class="modal-title" id="signupModalLabel">Create an Account</h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form method="post" action="signup_proc.php">
-          <div class="mb-3">
-            <label for="signupName" class="form-label">Full Name</label>
-            <input type="text" class="form-control" id="signupName" name="fname">
-          </div>
-          <div class="mb-3">
-            <label for="signupEmail" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="signupEmail" name="email">
-          </div>
-          <div class="mb-3">
-            <label for="signupPassword" class="form-label">Password</label>
-            <input type="password" class="form-control" id="signupPassword" name="pword">
-          </div>
-          <div class="mb-3">
-            <label for="confirmPassword" class="form-label">Confirm Password</label>
-            <input type="password" class="form-control" id="confirmPassword" name="cword">
-          </div>
-          <input type="hidden" name="uid">
-          <button type="submit" class="btn btn-success w-100" name="signup" >Sign Up</button>
-        </form>
-      </div>
-      <div class="modal-footer text-center">
-        <p class="mb-0">Already have an account? <a href="#loginModal" data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-dismiss="modal">Login</a></p>
-      </div>
-    </div>
-  </div>
-</div>  
 
 
 
@@ -1191,7 +1078,18 @@ document.addEventListener("DOMContentLoaded", function() {
     ride: 'carousel'
   });
 
-
+document.addEventListener("DOMContentLoaded", function() {
+  var navbarCollapse = document.getElementById('navbarNav');
+  var navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+  navLinks.forEach(function(link) {
+    link.addEventListener('click', function() {
+      if (navbarCollapse.classList.contains('show')) {
+        var bsCollapse = new bootstrap.Collapse(navbarCollapse, {toggle: false});
+        bsCollapse.hide();
+      }
+    });
+  });
+});
 
 
 
